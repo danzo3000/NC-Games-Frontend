@@ -12,3 +12,16 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+/* ReviewCard ------------------------------------------- */
+
+.reviewImg {
+  width: 12rem;
+  height: auto;
+}
+
+/* Reviews -----------------------------------------------*/
+
+.reviewsList li {
+  list-style-type: none;
+}

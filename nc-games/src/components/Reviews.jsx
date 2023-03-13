@@ -7,13 +7,16 @@ const Reviews = () => {
   useEffect(() => {
     getReviews().then((reviews) => {
       setReviews(reviews);
-      console.log(reviews);
     });
   }, []);
   return (
-    <ul>
+    <ul className="reviewsList">
       {reviews.map((review) => {
-        return <ReviewCard />;
+        return (
+          <li key={review.review_id}>
+            <ReviewCard review={review} />
+          </li>
+        );
       })}
     </ul>
   );
