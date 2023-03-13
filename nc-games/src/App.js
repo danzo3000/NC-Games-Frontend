@@ -1,7 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+const cors = require("cors");
 
 function App() {
+  App.use(cors());
   return (
     <div className="App">
       <header className="App-header">
