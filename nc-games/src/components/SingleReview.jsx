@@ -13,17 +13,18 @@ const SingleReview = ({
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);
+  const [isLoadingReview, setIsLoadingReview] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoadingReview(true);
     getReviewById(review_id).then((review) => {
-      setIsLoading(false);
+      setIsLoadingReview(false);
       setSingleReview(review);
       setCurrentVotes(review.votes);
     });
-  }, [review_id, setIsLoading, setCurrentVotes]);
+  }, [review_id, setIsLoadingReview, setCurrentVotes]);
 
-  if (isLoading) {
+  if (isLoadingReview) {
     return <h2>Loading...</h2>;
   } else {
     return (
@@ -51,8 +52,6 @@ const SingleReview = ({
           showComments={showComments}
           setShowComments={setShowComments}
           review_id={review_id}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
         />
       </section>
     );

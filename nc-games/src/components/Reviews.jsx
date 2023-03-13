@@ -3,22 +3,18 @@ import { getReviews } from "../utils/api";
 import CategorySort from "./CategorySort";
 import ReviewCard from "./ReviewCard";
 
-const Reviews = ({
-  isLoading,
-  setIsLoading,
-  currentVotes,
-  setCurrentVotes,
-}) => {
+const Reviews = ({ currentVotes, setCurrentVotes }) => {
   const [reviews, setReviews] = useState([]);
+  const [isLoadingReviews, setIsLoadingReviews] = useState(true);
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoadingReviews(true);
     getReviews().then((reviews) => {
-      setIsLoading(false);
+      setIsLoadingReviews(false);
       setReviews(reviews);
     });
-  }, [setIsLoading]);
+  }, [setIsLoadingReviews]);
 
-  if (isLoading) {
+  if (isLoadingReviews) {
     return <h2>Loading....</h2>;
   } else {
     return (

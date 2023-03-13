@@ -7,7 +7,6 @@ import Reviews from "./components/Reviews";
 import SingleReview from "./components/SingleReview.jsx";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [currentVotes, setCurrentVotes] = useState(0);
   return (
     <div className="App">
@@ -18,8 +17,6 @@ function App() {
           path="/"
           element={
             <Reviews
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
               currentVotes={currentVotes}
               setCurrentVotes={setCurrentVotes}
             />
@@ -29,8 +26,6 @@ function App() {
           path="/:review_id"
           element={
             <SingleReview
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
               currentVotes={currentVotes}
               setCurrentVotes={setCurrentVotes}
             />
