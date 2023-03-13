@@ -21,7 +21,7 @@ const SingleReview = ({
       setSingleReview(review);
       setCurrentVotes(review.votes);
     });
-  }, [review_id]);
+  }, [review_id, setIsLoading, setCurrentVotes]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;

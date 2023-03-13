@@ -16,12 +16,17 @@ const Comments = ({
       setIsLoading(false);
       setCurrentComments(comments);
     });
-  }, [review_id, isLoading, setIsLoading]);
+  }, [review_id, setIsLoading]);
   return (
     <div className={showComments ? "showComments" : "hideComments"}>
       <ul>
         {currentComments.map((comment) => {
-          return <li key={comment.comment_id}></li>;
+          return (
+            <li key={comment.comment_id}>
+              <h3>{comment.author} wrote: </h3>
+              <p>{comment.body}</p>
+            </li>
+          );
         })}
       </ul>
     </div>
