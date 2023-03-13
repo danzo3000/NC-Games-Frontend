@@ -1,5 +1,22 @@
+import { useEffect, useState } from "react";
+import { getReviews } from "../utils/api";
+import ReviewCard from "./ReviewCard";
+
 const Reviews = () => {
-  return <h2>Reviews Here</h2>;
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    getReviews().then((reviews) => {
+      setReviews(reviews);
+      console.log(reviews);
+    });
+  }, []);
+  return (
+    <ul>
+      {reviews.map((review) => {
+        return <ReviewCard />;
+      })}
+    </ul>
+  );
 };
 
 export default Reviews;
