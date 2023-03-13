@@ -3,7 +3,12 @@ import { getReviews } from "../utils/api";
 import CategorySort from "./CategorySort";
 import ReviewCard from "./ReviewCard";
 
-const Reviews = ({ isLoading, setIsLoading }) => {
+const Reviews = ({
+  isLoading,
+  setIsLoading,
+  currentVotes,
+  setCurrentVotes,
+}) => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     setIsLoading(true);
@@ -11,7 +16,7 @@ const Reviews = ({ isLoading, setIsLoading }) => {
       setIsLoading(false);
       setReviews(reviews);
     });
-  }, []);
+  }, [setIsLoading]);
 
   if (isLoading) {
     return <h2>Loading....</h2>;
@@ -23,7 +28,11 @@ const Reviews = ({ isLoading, setIsLoading }) => {
           {reviews.map((review) => {
             return (
               <li key={review.review_id}>
-                <ReviewCard review={review} />
+                <ReviewCard
+                  review={review}
+                  currentVotes={currentVotes}
+                  setCurrentVotes={setCurrentVotes}
+                />
               </li>
             );
           })}

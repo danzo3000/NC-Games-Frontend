@@ -32,3 +32,10 @@
   width: 15rem;
   height: auto;
 }
+
+/* Comments */
+
+.hideComments {
+  position: absolute;
+  left: -1000px;
+}
