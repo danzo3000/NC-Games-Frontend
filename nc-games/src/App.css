@@ -16,7 +16,7 @@
 /* ReviewCard ------------------------------------------- */
 
 .reviewImg {
-  width: 12rem;
+  width: 15rem;
   height: auto;
 }
 
@@ -24,4 +24,11 @@
 
 .reviewsList li {
   list-style-type: none;
+}
+
+/* SingleReview */
+
+.singleReview img {
+  width: 15rem;
+  height: auto;
 }

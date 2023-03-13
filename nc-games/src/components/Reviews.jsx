@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../utils/api";
+import CategorySort from "./CategorySort";
 import ReviewCard from "./ReviewCard";
 
 const Reviews = ({ isLoading, setIsLoading }) => {
@@ -16,15 +17,18 @@ const Reviews = ({ isLoading, setIsLoading }) => {
     return <h2>Loading....</h2>;
   } else {
     return (
-      <ul className="reviewsList">
-        {reviews.map((review) => {
-          return (
-            <li key={review.review_id}>
-              <ReviewCard review={review} />
-            </li>
-          );
-        })}
-      </ul>
+      <section className="categorySortAndReviews">
+        <CategorySort />
+        <ul className="reviewsList">
+          {reviews.map((review) => {
+            return (
+              <li key={review.review_id}>
+                <ReviewCard review={review} />
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     );
   }
 };

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import CategorySort from "./components/CategorySort.jsx";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Reviews from "./components/Reviews";
@@ -13,10 +12,19 @@ function App() {
     <div className="App">
       <NavBar />
       <Header />
-      <CategorySort />
-      <Reviews isLoading={isLoading} setIsLoading={setIsLoading} />
       <Routes>
-        <Route path="/reviews/:review_id" element={<SingleReview />} />
+        <Route
+          path="/"
+          element={
+            <Reviews isLoading={isLoading} setIsLoading={setIsLoading} />
+          }
+        />
+        <Route
+          path="/:review_id"
+          element={
+            <SingleReview isLoading={isLoading} setIsLoading={setIsLoading} />
+          }
+        />
       </Routes>
     </div>
   );
