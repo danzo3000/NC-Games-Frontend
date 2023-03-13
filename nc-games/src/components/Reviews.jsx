@@ -11,7 +11,7 @@ const Reviews = ({ isLoading, setIsLoading }) => {
       setIsLoading(false);
       setReviews(reviews);
     });
-  }, []);
+  }, [setIsLoading]);
 
   if (isLoading) {
     return <h2>Loading....</h2>;

@@ -13,7 +13,7 @@ const SingleReview = ({ isLoading, setIsLoading }) => {
       setIsLoading(false);
       setSingleReview(review);
     });
-  }, []);
+  }, [review_id, setIsLoading]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
