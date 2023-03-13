@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import CategorySort from "./components/CategorySort.jsx";
@@ -7,12 +8,13 @@ import Reviews from "./components/Reviews";
 import SingleReview from "./components/SingleReview.jsx";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   return (
     <div className="App">
       <NavBar />
       <Header />
       <CategorySort />
-      <Reviews />
+      <Reviews isLoading={isLoading} setIsLoading={setIsLoading} />
       <Routes>
         <Route path="/reviews/:review_id" element={<SingleReview />} />
       </Routes>

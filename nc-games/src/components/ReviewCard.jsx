@@ -4,7 +4,6 @@ const ReviewCard = ({ review }) => {
   const [currentVotes, setCurrentVotes] = useState(review.votes);
   return (
     <section className="ReviewCard">
-      {console.log(review)}
       <img
         className="reviewImg"
         src={review.review_img_url}
