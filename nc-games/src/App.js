@@ -7,7 +7,7 @@ import Reviews from "./components/Reviews";
 import SingleReview from "./components/SingleReview.jsx";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [currentVotes, setCurrentVotes] = useState(0);
   return (
     <div className="App">
       <NavBar />
@@ -16,13 +16,28 @@ function App() {
         <Route
           path="/"
           element={
-            <Reviews isLoading={isLoading} setIsLoading={setIsLoading} />
+            <Reviews
+              currentVotes={currentVotes}
+              setCurrentVotes={setCurrentVotes}
+            />
           }
         />
         <Route
-          path="/:review_id"
+          path="/reviews"
           element={
-            <SingleReview isLoading={isLoading} setIsLoading={setIsLoading} />
+            <Reviews
+              currentVotes={currentVotes}
+              setCurrentVotes={setCurrentVotes}
+            />
+          }
+        />
+        <Route
+          path="/reviews/:review_id"
+          element={
+            <SingleReview
+              currentVotes={currentVotes}
+              setCurrentVotes={setCurrentVotes}
+            />
           }
         />
       </Routes>
