@@ -20,7 +20,7 @@ function App() {
           }
         />
         <Route
-          path="/:review_id"
+          path="/reviews/:review_id"
           element={
             <SingleReview isLoading={isLoading} setIsLoading={setIsLoading} />
           }
