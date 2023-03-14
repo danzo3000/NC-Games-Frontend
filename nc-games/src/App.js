@@ -23,7 +23,16 @@ function App() {
           }
         />
         <Route
-          path="/:review_id"
+          path="/reviews"
+          element={
+            <Reviews
+              currentVotes={currentVotes}
+              setCurrentVotes={setCurrentVotes}
+            />
+          }
+        />
+        <Route
+          path="/reviews/:review_id"
           element={
             <SingleReview
               currentVotes={currentVotes}
