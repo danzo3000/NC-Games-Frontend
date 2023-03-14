@@ -29,3 +29,18 @@ export const patchVotesUp = (review_id, num) => {
       return data.review;
     });
 };
+
+export const getUsers = () => {
+  return ncGamesApi.get("/users").then(({ data }) => {
+    return data.users;
+  });
+};
+
+export const postComment = (commentObject, review_id) => {
+  console.log(commentObject);
+  return ncGamesApi
+    .post(`/reviews/${review_id}/comments`, commentObject)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
