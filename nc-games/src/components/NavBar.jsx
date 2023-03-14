@@ -1,5 +1,34 @@
-const NavBar = () => {
-  return <h2>NavBar Here</h2>;
+import { Link } from "react-router-dom";
+
+const NavBar = ({ isUserLoggedIn, user, setIsUserLoggedIn, setUser }) => {
+  return (
+    <nav className="navBar">
+      <ul>
+        <li>
+          <Link className="noUnderline" to="/">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link className="noUnderline" to="/users">
+            Users
+          </Link>
+        </li>
+        <li className="navUserButton">
+          {isUserLoggedIn ? (
+            <div className="smallUserIcon">
+              <img src={user.avatar_url} alt={user.username} />
+              <p>{user.username}</p>
+            </div>
+          ) : (
+            <Link className="loginButtonText" to="/users">
+              LOGIN
+            </Link>
+          )}
+        </li>
+      </ul>
+    </nav>
+  );
 };
 
 export default NavBar;

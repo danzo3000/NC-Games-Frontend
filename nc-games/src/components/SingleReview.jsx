@@ -4,12 +4,7 @@ import { getReviewById } from "../utils/api";
 import { useState } from "react";
 import Comments from "./Comments";
 
-const SingleReview = ({
-  isLoading,
-  setIsLoading,
-  currentVotes,
-  setCurrentVotes,
-}) => {
+const SingleReview = ({ isUserLoggedIn, setIsUserLoggedIn, user }) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);
@@ -20,26 +15,24 @@ const SingleReview = ({
     getReviewById(review_id).then((review) => {
       setIsLoadingReview(false);
       setSingleReview(review);
-      setCurrentVotes(review.votes);
     });
-  }, [review_id, setIsLoadingReview, setCurrentVotes]);
+  }, [review_id, setIsLoadingReview]);
 
   if (isLoadingReview) {
     return <h2>Loading...</h2>;
   } else {
     return (
       <section className="singleReview">
-        {console.log(showComments)}
         <img src={singleReview.review_img_url} alt={singleReview.title} />
         <h2>{singleReview.title}</h2>
         <h3>{singleReview.category} game</h3>
         <h3> Designed by {singleReview.designer}</h3>
         <p>{singleReview.review_body}</p>
         <p> Owner: {singleReview.owner}</p>
-        {currentVotes === 1 ? (
-          <p>{currentVotes} vote</p>
+        {singleReview.votes === 1 ? (
+          <p>{singleReview.votes} vote</p>
         ) : (
-          <p>{currentVotes} votes</p>
+          <p>{singleReview.votes} votes</p>
         )}
         <button
           onClick={() => {
@@ -52,12 +45,17 @@ const SingleReview = ({
             ? `Show ${singleReview.comment_count} comment`
             : !showComments && singleReview.comment_count > 1
             ? `Show ${singleReview.comment_count} comments`
+            : !showComments && singleReview.comment_count === 0
+            ? "Be the first to add a comment"
             : "Hide comments"}
         </button>
         <Comments
           showComments={showComments}
           setShowComments={setShowComments}
           review_id={review_id}
+          isUserLoggedIn={isUserLoggedIn}
+          setIsUserLoggedIn={setIsUserLoggedIn}
+          user={user}
         />
       </section>
     );

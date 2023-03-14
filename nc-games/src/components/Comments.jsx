@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { getCommentsByReviewId } from "../utils/api";
+import CommentAdder from "./CommentAdder";
 
-const Comments = ({ showComments, setShowComments, review_id }) => {
+const Comments = ({
+  showComments,
+  setShowComments,
+  review_id,
+  isUserLoggedIn,
+  setIsUserLoggedIn,
+  user,
+}) => {
   const [currentComments, setCurrentComments] = useState([]);
   const [isLoadingComments, setIsLoadingComments] = useState(true);
 
@@ -18,12 +26,19 @@ const Comments = ({ showComments, setShowComments, review_id }) => {
   } else {
     return (
       <div className={showComments ? "showComments" : "hideComments"}>
+        <CommentAdder
+          review_id={review_id}
+          isUserLoggedIn={isUserLoggedIn}
+          setIsUserLoggedIn={setIsUserLoggedIn}
+          user={user}
+          setShowComments={setShowComments}
+        />
         <ul>
           {currentComments.map((comment) => {
             return (
               <li key={comment.comment_id}>
                 <h3>{comment.author} wrote: </h3>
-                <p classname="commentBody">{comment.body}</p>
+                <p className="commentBody">{comment.body}</p>
               </li>
             );
           })}
