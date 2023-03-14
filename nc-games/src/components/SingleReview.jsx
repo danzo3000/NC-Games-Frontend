@@ -43,10 +43,16 @@ const SingleReview = ({
         )}
         <button
           onClick={() => {
-            setShowComments(true);
+            {
+              showComments ? setShowComments(false) : setShowComments(true);
+            }
           }}
         >
-          {singleReview.comment_count} comments
+          {!showComments && singleReview.comment_count === 1
+            ? `Show ${singleReview.comment_count} comment`
+            : !showComments && singleReview.comment_count > 1
+            ? `Show ${singleReview.comment_count} comments`
+            : "Hide comments"}
         </button>
         <Comments
           showComments={showComments}
