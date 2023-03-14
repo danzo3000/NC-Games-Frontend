@@ -12,11 +12,7 @@ const Reviews = ({ currentVotes, setCurrentVotes }) => {
       setIsLoadingReviews(false);
       setReviews(reviews);
     });
-<<<<<<< HEAD
-  }, [setIsLoading]);
-=======
   }, [setIsLoadingReviews]);
->>>>>>> ca0a922eea27cee253ac4e03121e11fc6e9d761c
 
   if (isLoadingReviews) {
     return <h2>Loading....</h2>;

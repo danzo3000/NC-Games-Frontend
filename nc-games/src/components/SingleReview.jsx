@@ -22,11 +22,7 @@ const SingleReview = ({
       setSingleReview(review);
       setCurrentVotes(review.votes);
     });
-<<<<<<< HEAD
-  }, [review_id, setIsLoading]);
-=======
   }, [review_id, setIsLoadingReview, setCurrentVotes]);
->>>>>>> ca0a922eea27cee253ac4e03121e11fc6e9d761c
 
   if (isLoadingReview) {
     return <h2>Loading...</h2>;
