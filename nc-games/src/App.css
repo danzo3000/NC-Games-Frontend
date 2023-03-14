@@ -26,6 +26,10 @@
   list-style-type: none;
 }
 
+.blueLikeButton {
+  background-color: blue;
+}
+
 /* SingleReview */
 
 .singleReview img {
