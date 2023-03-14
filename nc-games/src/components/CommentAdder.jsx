@@ -7,6 +7,7 @@ const CommentAdder = ({
   user,
   review_id,
   setShowComments,
+  setCurrentComments,
 }) => {
   const [commentObject, setCommentObject] = useState({
     username: user.username,
@@ -21,6 +22,9 @@ const CommentAdder = ({
     postComment(commentObject, review_id).then((comment) => {
       console.log(comment);
       setCommentObject({ username: user.username, body: "" });
+      setCurrentComments((current) => {
+        return [comment, ...current];
+      });
     });
   };
   return (

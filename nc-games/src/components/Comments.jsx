@@ -32,6 +32,8 @@ const Comments = ({
           setIsUserLoggedIn={setIsUserLoggedIn}
           user={user}
           setShowComments={setShowComments}
+          currentComments={currentComments}
+          setCurrentComments={setCurrentComments}
         />
         <ul>
           {currentComments.map((comment) => {
