@@ -14,7 +14,7 @@ const ReviewCard = ({ review, currentVotes, setCurrentVotes }) => {
       </Link>
       <h3>{review.category} game</h3>
       <p>Review: {review.review_body}</p>
-      <p>Votes: {currentVotes}</p>
+      <p>Votes: {review.votes}</p>
     </section>
   );
 };
