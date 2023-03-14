@@ -2,36 +2,61 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getReviewById } from "../utils/api";
 import { useState } from "react";
+import Comments from "./Comments";
 
-const SingleReview = ({ isLoading, setIsLoading }) => {
+const SingleReview = ({
+  isLoading,
+  setIsLoading,
+  currentVotes,
+  setCurrentVotes,
+}) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
+  const [showComments, setShowComments] = useState(false);
+  const [isLoadingReview, setIsLoadingReview] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoadingReview(true);
     getReviewById(review_id).then((review) => {
-      setIsLoading(false);
+      setIsLoadingReview(false);
       setSingleReview(review);
+      setCurrentVotes(review.votes);
     });
+<<<<<<< HEAD
   }, [review_id, setIsLoading]);
+=======
+  }, [review_id, setIsLoadingReview, setCurrentVotes]);
+>>>>>>> ca0a922eea27cee253ac4e03121e11fc6e9d761c
 
-  if (isLoading) {
+  if (isLoadingReview) {
     return <h2>Loading...</h2>;
   } else {
     return (
       <section className="singleReview">
+        {console.log(showComments)}
         <img src={singleReview.review_img_url} alt={singleReview.title} />
         <h2>{singleReview.title}</h2>
         <h3>{singleReview.category} game</h3>
         <h3> Designed by {singleReview.designer}</h3>
         <p>{singleReview.review_body}</p>
         <p> Owner: {singleReview.owner}</p>
-        <p>{singleReview.comment_count} comments</p>
-        {singleReview.votes === 1 ? (
-          <p>{singleReview.votes} vote</p>
+        {currentVotes === 1 ? (
+          <p>{currentVotes} vote</p>
         ) : (
-          <p>{singleReview.votes} votes</p>
+          <p>{currentVotes} votes</p>
         )}
+        <button
+          onClick={() => {
+            setShowComments(true);
+          }}
+        >
+          {singleReview.comment_count} comments
+        </button>
+        <Comments
+          showComments={showComments}
+          setShowComments={setShowComments}
+          review_id={review_id}
+        />
       </section>
     );
   }

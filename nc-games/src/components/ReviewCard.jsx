@@ -1,7 +1,4 @@
-import { useState } from "react";
-
-const ReviewCard = ({ review }) => {
-  const [currentVotes, setCurrentVotes] = useState(review.votes);
+const ReviewCard = ({ review, currentVotes, setCurrentVotes }) => {
   return (
     <section className="ReviewCard">
       <img
