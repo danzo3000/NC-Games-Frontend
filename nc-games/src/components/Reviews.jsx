@@ -4,12 +4,14 @@ import CategorySort from "./CategorySort";
 import ReviewCard from "./ReviewCard";
 import { BiLike } from "react-icons/bi";
 import { patchVotesUp } from "../utils/api";
+import { useParams } from "react-router-dom";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
   const [isUpVote, setIsUpVote] = useState(false);
   const [error, setError] = useState(null);
+  const { category_slug } = useParams();
 
   const handleUpVoteClick = (review_id) => {
     if (!isUpVote) {
@@ -69,11 +71,11 @@ const Reviews = () => {
 
   useEffect(() => {
     setIsLoadingReviews(true);
-    getReviews().then((reviews) => {
+    getReviews(category_slug).then((reviews) => {
       setIsLoadingReviews(false);
       setReviews(reviews);
     });
-  }, [setIsLoadingReviews]);
+  }, [setIsLoadingReviews, category_slug]);
 
   if (isLoadingReviews) {
     return <h2>Loading....</h2>;

@@ -4,10 +4,13 @@ const ncGamesApi = axios.create({
   baseURL: "https://backend-project-nc-games.onrender.com/api",
 });
 
-export const getReviews = () => {
-  return ncGamesApi.get("/reviews").then(({ data }) => {
-    return data.reviews;
-  });
+export const getReviews = (category_slug) => {
+  let path = `/reviews`;
+  return ncGamesApi
+    .get(path, { params: { category: category_slug } })
+    .then(({ data }) => {
+      return data.reviews;
+    });
 };
 
 export const getReviewById = (review_id) => {
@@ -43,4 +46,10 @@ export const postComment = (commentObject, review_id) => {
     .then(({ data }) => {
       return data.comment;
     });
+};
+
+export const getCategories = () => {
+  return ncGamesApi.get("/categories").then(({ data }) => {
+    return data.categories;
+  });
 };
