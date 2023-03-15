@@ -18,8 +18,10 @@ const CategorySort = () => {
       <ul className="categoryList">
         {categoryList.map((category) => {
           return (
-            <li className="categoryItem">
-              <p>Add a link to {category.slug}</p>
+            <li className="categoryItem" key={category.slug}>
+              <Link to={`/categories/${category.slug}`}>
+                <p>View {category.slug} games</p>
+              </Link>
             </li>
           );
         })}

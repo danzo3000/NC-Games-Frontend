@@ -6,11 +6,9 @@ const ncGamesApi = axios.create({
 
 export const getReviews = (category_slug) => {
   let path = `/reviews`;
-
   return ncGamesApi
-    .get(path, { params: { category_slug: category_slug } })
+    .get(path, { params: { category: category_slug } })
     .then(({ data }) => {
-      console.log(data);
       return data.reviews;
     });
 };

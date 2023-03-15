@@ -75,7 +75,7 @@ const Reviews = () => {
       setIsLoadingReviews(false);
       setReviews(reviews);
     });
-  }, [setIsLoadingReviews]);
+  }, [setIsLoadingReviews, category_slug]);
 
   if (isLoadingReviews) {
     return <h2>Loading....</h2>;
