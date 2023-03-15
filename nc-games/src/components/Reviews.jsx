@@ -12,6 +12,8 @@ const Reviews = () => {
   const [isUpVote, setIsUpVote] = useState(false);
   const [error, setError] = useState(null);
   const { category_slug } = useParams();
+  const [sortBy, setSortBy] = useState("title");
+  const [order, setOrder] = useState("asc");
 
   const handleUpVoteClick = (review_id) => {
     if (!isUpVote) {
@@ -69,13 +71,25 @@ const Reviews = () => {
     }
   };
 
+  const handleOrderChangeUp = () => {
+    setOrder("asc");
+  };
+
+  const handleOrderChangeDown = () => {
+    setOrder("desc");
+  };
+
+  const handleSortChange = (event) => {
+    setSortBy(event.target.value);
+  };
+
   useEffect(() => {
     setIsLoadingReviews(true);
-    getReviews(category_slug).then((reviews) => {
+    getReviews(category_slug, sortBy, order).then((reviews) => {
       setIsLoadingReviews(false);
       setReviews(reviews);
     });
-  }, [setIsLoadingReviews, category_slug]);
+  }, [category_slug, sortBy, order]);
 
   if (isLoadingReviews) {
     return <h2>Loading....</h2>;
@@ -83,6 +97,17 @@ const Reviews = () => {
     return (
       <section className="categorySortAndReviews">
         <CategorySort />
+
+        <select onChange={handleSortChange}>
+          <option value="">Sort Reviews By</option>
+          <option value="title">Title</option>
+          <option value="created_at">Date</option>
+          <option value="votes">Votes</option>
+        </select>
+
+        <button onClick={handleOrderChangeUp}>↑</button>
+        <button onClick={handleOrderChangeDown}>↓</button>
+
         <ul className="reviewsList">
           {reviews.map((review) => {
             return (
