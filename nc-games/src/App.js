@@ -43,6 +43,7 @@ function App() {
             />
           }
         />
+        <Route path="/categories/:category_slug" element={<Reviews />} />
       </Routes>
     </div>
   );
