@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../utils/api";
 
-const CategorySort = () => {
+const CategorySort = ({ setIsLoadingReviews, setError }) => {
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
+    setIsLoadingReviews(true);
     getCategories().then((categories) => {
       setCategoryList(categories);
+      setIsLoadingReviews(false);
     });
-  }, []);
+  }, [setIsLoadingReviews]);
+
   return (
     <div>
       <h2 className="introText">
