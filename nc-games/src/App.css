@@ -231,12 +231,19 @@ body {
 .navUserButton {
   position: sticky;
   float: right;
+  max-width: 68.97px;
+  max-height: 45px;
   top: 0;
   cursor: pointer;
   background-color: var(--pink);
   font-size: 2rem;
   display: flex;
-  border: none;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+  border: 2px solid var(--green);
   margin: 0.4rem;
   border-radius: 50%;
 }
@@ -256,12 +263,15 @@ body {
 }
 
 .smallUserIcon img {
-  width: 50px;
-  height: auto;
+  max-height: 25px;
+  max-width: 65px;
+  clip-path: circle(50px at 50% 50%);
 }
 
 .smallUserIcon p {
   margin-top: 0;
+  font-size: 0.5rem;
+  color: black;
 }
 
 .smallUserIcon {

@@ -20,18 +20,26 @@ const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
     <div>
       <div>
         {!isUserLoggedIn ? (
-          <p>Please select a user from the list</p>
+          <p className="userInstructions">Please select a user from the list</p>
         ) : (
           <div>
-            <p>Logged in as {user.name}</p>
-            <button onClick={() => logout()}>LOGOUT</button>
+            <p classname="userInstructions">
+              Logged in as <span className="username">{user.name}</span>
+            </p>
+            <button className="logoutButton" onClick={() => logout()}>
+              LOGOUT
+            </button>
           </div>
         )}
       </div>
-      <ul>
+      <ul className="usersList">
         {userList.map((user) => {
           return (
-            <li key={user.name} onClick={() => handleClick(user)}>
+            <li
+              className={isUserLoggedIn ? "highlightUserCard" : "userCard"}
+              key={user.name}
+              onClick={() => handleClick(user)}
+            >
               <img src={user.avatar_url} alt={user.username} />
               <h3>{user.name}</h3>
               <h4>Username: {user.username}</h4>
