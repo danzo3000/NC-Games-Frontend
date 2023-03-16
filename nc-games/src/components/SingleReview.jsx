@@ -40,50 +40,52 @@ const SingleReview = ({ isUserLoggedIn, setIsUserLoggedIn, user }) => {
     return <h2 className="loading">Loading...</h2>;
   } else {
     return (
-      <section className="ReviewCard">
-        <img
-          className="reviewImg"
-          src={singleReview.review_img_url}
-          alt={singleReview.title}
-        />
-        <h2 className="reviewCardTitle">{singleReview.title}</h2>
-        <h3 className="reviewCardCategory">{singleReview.category} game</h3>
-        <h3 className="reviewCardDesigner">
-          {" "}
-          Designed by {singleReview.designer}
-        </h3>
-        <p className="reviewCardBody">{singleReview.review_body}</p>
-        <p className="reviewCardOwner"> Owner: {singleReview.owner}</p>
-        {singleReview.votes === 1 ? (
-          <p className="reviewCardVotes">{singleReview.votes} vote</p>
-        ) : (
-          <p className="reviewCardVotes">{singleReview.votes} votes</p>
-        )}
-        <button
-          className="commentsButton"
-          onClick={() => {
-            {
-              showComments ? setShowComments(false) : setShowComments(true);
-            }
-          }}
-        >
-          {!showComments && singleReview.comment_count === 1
-            ? `Show ${singleReview.comment_count} comment`
-            : !showComments && singleReview.comment_count > 1
-            ? `Show ${singleReview.comment_count} comments`
-            : !showComments && singleReview.comment_count === 0
-            ? "Be the first to add a comment"
-            : "Hide comments"}
-        </button>
-        <Comments
-          showComments={showComments}
-          setShowComments={setShowComments}
-          review_id={review_id}
-          isUserLoggedIn={isUserLoggedIn}
-          setIsUserLoggedIn={setIsUserLoggedIn}
-          user={user}
-        />
-      </section>
+      <div className="singleReviewContainer">
+        <section className="singleReviewCard">
+          <img
+            className="reviewImg"
+            src={singleReview.review_img_url}
+            alt={singleReview.title}
+          />
+          <h2 className="reviewCardTitle">{singleReview.title}</h2>
+          <h3 className="reviewCardCategory">{singleReview.category} game</h3>
+          <h3 className="reviewCardDesigner">
+            {" "}
+            Designed by {singleReview.designer}
+          </h3>
+          <p className="reviewCardBody">{singleReview.review_body}</p>
+          <p className="reviewCardOwner"> Owner: {singleReview.owner}</p>
+          {singleReview.votes === 1 ? (
+            <p className="reviewCardVotes">{singleReview.votes} vote</p>
+          ) : (
+            <p className="reviewCardVotes">{singleReview.votes} votes</p>
+          )}
+          <button
+            className="commentsButton"
+            onClick={() => {
+              {
+                showComments ? setShowComments(false) : setShowComments(true);
+              }
+            }}
+          >
+            {!showComments && singleReview.comment_count === 1
+              ? `Show ${singleReview.comment_count} comment`
+              : !showComments && singleReview.comment_count > 1
+              ? `Show ${singleReview.comment_count} comments`
+              : !showComments && singleReview.comment_count === 0
+              ? "Be the first to add a comment"
+              : "Hide comments"}
+          </button>
+          <Comments
+            showComments={showComments}
+            setShowComments={setShowComments}
+            review_id={review_id}
+            isUserLoggedIn={isUserLoggedIn}
+            setIsUserLoggedIn={setIsUserLoggedIn}
+            user={user}
+          />
+        </section>
+      </div>
     );
   }
 };

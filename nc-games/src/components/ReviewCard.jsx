@@ -69,7 +69,7 @@ const ReviewCard = ({
   };
   return (
     <section className="ReviewCard">
-      <Link to={`/reviews/${review.review_id}`}>
+      <Link className="reviewLink" to={`/reviews/${review.review_id}`}>
         {" "}
         <img
           className="reviewImg"
