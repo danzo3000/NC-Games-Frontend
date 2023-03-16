@@ -44,7 +44,7 @@ const Reviews = () => {
   }, [category_slug, sortBy, order]);
 
   if (isLoadingReviews) {
-    return <h2>Loading Reviews....</h2>;
+    return <h2 className="loading">Loading Reviews....</h2>;
   } else if (error) {
     return <p className="BadPathMessage">{error}</p>;
   } else {

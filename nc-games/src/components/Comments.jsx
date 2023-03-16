@@ -44,17 +44,18 @@ const Comments = ({
           currentComments={currentComments}
           setCurrentComments={setCurrentComments}
         />
-        <ul>
+        <ul className="commentsList">
           {currentComments.map((comment) => {
             return (
-              <li key={comment.comment_id}>
-                <h3>{comment.author} wrote: </h3>
+              <li className="singleComment" key={comment.comment_id}>
+                <h3 className="commentAuthor">{comment.author} </h3>
                 <p className="commentBody">{comment.body}</p>
                 {isUserLoggedIn && user.username === comment.author ? (
                   <button
+                    className="deleteCommentButton"
                     onClick={() => handleDeleteComment(comment.comment_id)}
                   >
-                    Delete Comment
+                    Delete
                   </button>
                 ) : null}
               </li>

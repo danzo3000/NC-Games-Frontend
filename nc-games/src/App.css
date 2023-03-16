@@ -147,11 +147,17 @@ body {
 }
 
 .blueLikeButton {
-  background-color: blue;
+  background-color: var(--dark-blue);
 }
 
 .categorySortAndReviews {
   background-image: url("./images/game-background.jpg");
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 /* SingleReview ------------------------------------------*/
@@ -159,6 +165,29 @@ body {
 .singleReview img {
   width: 15rem;
   height: auto;
+}
+
+.reviewCardDesigner {
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+.reviewCardOwner {
+  margin: 0.3rem;
+}
+
+.commentsButton {
+  margin: 0.3rem;
+  background-color: var(--pink);
+  border: 3px solid var(--green);
+  padding: 0.3rem;
+  border-radius: 20px;
+  font-weight: 800;
+}
+
+.commentsButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
 }
 
 /* Comments ----------------------------------------------*/
@@ -176,10 +205,41 @@ body {
 }
 
 .showComments ul li {
-  border: 1px solid black;
-  display: flex;
-  width: 15rem;
-  flex-direction: column;
+  border-radius: 20px;
+  display: block;
+  width: 90%;
+  text-align: start;
+  background-color: #ffcaaf;
+  margin-top: 0.5rem;
+}
+
+.commentAuthor {
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  padding-left: 0.7rem;
+  padding-top: 0.5rem;
+}
+
+.commentBody {
+  font-size: 0.75rem;
+  padding-left: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.deleteCommentButton {
+  margin: 0.5rem;
+  margin-left: 0.75rem;
+  padding: 0.2rem;
+  font-size: 0.75rem;
+  background-color: red;
+  color: white;
+  border-radius: 20px;
+  font-weight: 800;
+}
+
+.deleteCommentButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
 }
 
 /* CommentAdder ------------------------------------------ */
@@ -189,13 +249,45 @@ body {
   font-size: 0.7rem;
 }
 
+.commentAdder {
+  display: flex;
+}
+
+.commentLabel {
+  padding: 0.2rem;
+  font-size: 0.75rem;
+}
+
+.commentArea {
+  width: 90%;
+  margin-right: 0.2rem;
+}
+
+.commentArea:hover {
+  cursor: text;
+  box-shadow: 1px 1px 5px 5px white;
+}
+
+.commentButton {
+  margin-right: 0.3rem;
+  font-size: 0.75rem;
+  padding: 0.2rem;
+  background-color: var(--green);
+  font-weight: 800;
+}
+
+.commentButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
+}
+
 /* NavBar ------------------------------------------------ */
 
 .navBar {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(198, 226, 233, 0.9);
+  background-color: rgba(198, 226, 233, 0.98);
   border: 5px solid var(--pink);
   border-left: none;
   border-right: none;
@@ -329,12 +421,97 @@ body {
   box-shadow: 1px 1px 5px 2px black;
 }
 
+/* Users ----------------------------------------*/
+
+.userInstructions {
+  background-color: rgba(255, 202, 175, 0.9);
+  padding: 0.5rem;
+  font-family: "chakra petch", sans-serif;
+}
+
+.usersList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.userCard {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgba(198, 226, 233, 0.95);
+  box-shadow: 1px 1px 5px 1px black;
+}
+
+.highlightUserCard {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgba(198, 226, 233, 0.95);
+  box-shadow: 1px 1px 5px 5px var(--pink);
+}
+
+.userAvatar {
+  max-height: 219px;
+  max-width: 304px;
+  border-radius: 20px;
+}
+
+.userCardName {
+  font-family: "orbitron", sans-serif;
+  padding: 0.2rem;
+}
+
+.userCardUsername {
+  padding: 0.2rem;
+}
+
+.username {
+  font-family: "orbitron", sans-serif;
+  font-weight: 800;
+}
+
+.logoutButton {
+  margin-top: 0.5rem;
+  padding: 0.4rem;
+  background-color: var(--light-blue);
+  border: 3px solid var(--pink);
+  border-radius: 20px;
+  font-family: "chakra petch", sans-serif;
+}
+
+.logoutButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
+}
+
 /* Error Handling */
 
 .BadPathMessage {
   background-color: rgba(255, 202, 175, 1);
   color: black;
   font-family: "chakra petch", sans-serif;
+  font-size: 1.2rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  padding: 0.5rem;
+  margin-top: 5rem;
+  border: 5px solid var(--light-blue);
+  border-radius: 20px;
+}
+
+.loading {
+  background-color: rgba(255, 202, 175, 1);
+  color: black;
+  font-family: "orbitron", sans-serif;
   font-size: 1.2rem;
   margin-left: 4rem;
   margin-right: 4rem;

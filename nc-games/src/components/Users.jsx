@@ -20,7 +20,7 @@ const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
     });
   }, []);
   if (isLoadingUsers) {
-    return <p>Loading Users...</p>;
+    return <p className="loading">Loading Users...</p>;
   }
   return (
     <div>
@@ -29,8 +29,8 @@ const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
           <p className="userInstructions">Please select a user from the list</p>
         ) : (
           <div>
-            <p classname="userInstructions">
-              Logged in as <span className="username">{user.name}</span>
+            <p className="userInstructions">
+              <span className="username">{user.name}</span> is logged in
             </p>
             <button className="logoutButton" onClick={() => logout()}>
               LOGOUT
@@ -39,16 +39,26 @@ const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
         )}
       </div>
       <ul className="usersList">
-        {userList.map((user) => {
+        {userList.map((thisUser) => {
           return (
             <li
-              className={isUserLoggedIn ? "highlightUserCard" : "userCard"}
-              key={user.name}
-              onClick={() => handleClick(user)}
+              className={
+                isUserLoggedIn && user.username === thisUser.username
+                  ? "highlightUserCard"
+                  : "userCard"
+              }
+              key={thisUser.name}
+              onClick={() => handleClick(thisUser)}
             >
-              <img src={user.avatar_url} alt={user.username} />
-              <h3>{user.name}</h3>
-              <h4>Username: {user.username}</h4>
+              <img
+                className="userAvatar"
+                src={thisUser.avatar_url}
+                alt={thisUser.username}
+              />
+              <h3 className="userCardName">{thisUser.name}</h3>
+              <h4 className="userCardUsername">
+                Username: {thisUser.username}
+              </h4>
             </li>
           );
         })}

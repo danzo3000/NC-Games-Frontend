@@ -28,9 +28,12 @@ const CommentAdder = ({
     });
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="commentArea">Add a comment: </label>
+    <form className="commentAdder" onSubmit={handleSubmit}>
+      <label className="commentLabel" htmlFor="commentArea">
+        Add a comment{" "}
+      </label>
       <textarea
+        className="commentArea"
         onChange={handleChange}
         id="commentArea"
         placeholder={
@@ -41,7 +44,7 @@ const CommentAdder = ({
         required
         value={commentObject.body}
       ></textarea>
-      {isUserLoggedIn ? <button>Add Comment</button> : null}
+      {isUserLoggedIn ? <button className="commentButton">Post</button> : null}
     </form>
   );
 };

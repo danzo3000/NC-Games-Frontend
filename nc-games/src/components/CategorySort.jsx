@@ -5,10 +5,8 @@ import { getCategories } from "../utils/api";
 const CategorySort = ({ setIsLoadingReviews, setError }) => {
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
-    setIsLoadingReviews(true);
     getCategories().then((categories) => {
       setCategoryList(categories);
-      setIsLoadingReviews(false);
     });
   }, [setIsLoadingReviews]);
 

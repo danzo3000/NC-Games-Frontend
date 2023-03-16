@@ -37,22 +37,30 @@ const SingleReview = ({ isUserLoggedIn, setIsUserLoggedIn, user }) => {
     return <p className="BadPathMessage">{reviewPathError}</p>;
   }
   if (isLoadingReview) {
-    return <h2>Loading...</h2>;
+    return <h2 className="loading">Loading...</h2>;
   } else {
     return (
-      <section className="singleReview">
-        <img src={singleReview.review_img_url} alt={singleReview.title} />
-        <h2>{singleReview.title}</h2>
-        <h3>{singleReview.category} game</h3>
-        <h3> Designed by {singleReview.designer}</h3>
-        <p>{singleReview.review_body}</p>
-        <p> Owner: {singleReview.owner}</p>
+      <section className="ReviewCard">
+        <img
+          className="reviewImg"
+          src={singleReview.review_img_url}
+          alt={singleReview.title}
+        />
+        <h2 className="reviewCardTitle">{singleReview.title}</h2>
+        <h3 className="reviewCardCategory">{singleReview.category} game</h3>
+        <h3 className="reviewCardDesigner">
+          {" "}
+          Designed by {singleReview.designer}
+        </h3>
+        <p className="reviewCardBody">{singleReview.review_body}</p>
+        <p className="reviewCardOwner"> Owner: {singleReview.owner}</p>
         {singleReview.votes === 1 ? (
-          <p>{singleReview.votes} vote</p>
+          <p className="reviewCardVotes">{singleReview.votes} vote</p>
         ) : (
-          <p>{singleReview.votes} votes</p>
+          <p className="reviewCardVotes">{singleReview.votes} votes</p>
         )}
         <button
+          className="commentsButton"
           onClick={() => {
             {
               showComments ? setShowComments(false) : setShowComments(true);
