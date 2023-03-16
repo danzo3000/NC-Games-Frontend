@@ -9,15 +9,33 @@ const SingleReview = ({ isUserLoggedIn, setIsUserLoggedIn, user }) => {
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);
   const [isLoadingReview, setIsLoadingReview] = useState(true);
+  const [reviewPathError, setReviewPathError] = useState(null);
 
   useEffect(() => {
     setIsLoadingReview(true);
-    getReviewById(review_id).then((review) => {
-      setIsLoadingReview(false);
-      setSingleReview(review);
-    });
+    getReviewById(review_id)
+      .then((review) => {
+        setIsLoadingReview(false);
+        setSingleReview(review);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        let msg = "";
+        if (err.message === "Request failed with status code 400") {
+          msg +=
+            "400: Bad Request! Please check the URL for a typing error, or click 'Home' to head back to our homepage!";
+        }
+        if (err.message === "Request failed with status code 404") {
+          msg +=
+            "404: Page not found! We're sorry but the page you're looking for doesn't seem to exist yet. Please check the URL or click 'Home' to head back to our homepage!";
+        }
+        setReviewPathError(msg);
+        setIsLoadingReview(false);
+      });
   }, [review_id, setIsLoadingReview]);
-
+  if (reviewPathError) {
+    return <p className="BadPathMessage">{reviewPathError}</p>;
+  }
   if (isLoadingReview) {
     return <h2>Loading...</h2>;
   } else {

@@ -3,6 +3,7 @@ import { getUsers } from "../utils/api";
 
 const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
   const [userList, setUserList] = useState([]);
+  const [isLoadingUsers, setIsLoadingUsers] = useState(true);
   const logout = () => {
     setIsUserLoggedIn(false);
     setUser({});
@@ -12,10 +13,15 @@ const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
     setIsUserLoggedIn(true);
   };
   useEffect(() => {
+    setIsLoadingUsers(true);
     getUsers().then((users) => {
       setUserList(users);
+      setIsLoadingUsers(false);
     });
   }, []);
+  if (isLoadingUsers) {
+    return <p>Loading Users...</p>;
+  }
   return (
     <div>
       <div>
