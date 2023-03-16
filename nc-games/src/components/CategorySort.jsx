@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../utils/api";
 
-const CategorySort = ({ setIsLoadingReviews, setError }) => {
+const CategorySort = ({ setIsLoadingReviews }) => {
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
     getCategories().then((categories) => {

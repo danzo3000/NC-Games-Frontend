@@ -68,5 +68,3 @@ const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
 };
 
 export default Users;
-
-// could have some css that highlights the currently logged-in User profile

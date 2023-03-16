@@ -3,7 +3,6 @@ import { postComment } from "../utils/api";
 
 const CommentAdder = ({
   isUserLoggedIn,
-  setIsUserLoggedIn,
   user,
   review_id,
   setShowComments,
@@ -20,7 +19,6 @@ const CommentAdder = ({
     event.preventDefault();
     setShowComments(true);
     postComment(commentObject, review_id).then((comment) => {
-      console.log(comment);
       setCommentObject({ username: user.username, body: "" });
       setCurrentComments((current) => {
         return [comment, ...current];

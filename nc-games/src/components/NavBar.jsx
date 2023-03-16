@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NavBar = ({ isUserLoggedIn, user, setIsUserLoggedIn, setUser }) => {
+const NavBar = ({ isUserLoggedIn, user }) => {
   return (
     <nav className="navBar">
       <ul>

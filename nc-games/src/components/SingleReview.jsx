@@ -19,7 +19,6 @@ const SingleReview = ({ isUserLoggedIn, setIsUserLoggedIn, user }) => {
         setSingleReview(review);
       })
       .catch((err) => {
-        console.log(err.message);
         let msg = "";
         if (err.message === "Request failed with status code 400") {
           msg +=

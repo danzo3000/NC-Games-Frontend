@@ -3,14 +3,7 @@ import { BiLike } from "react-icons/bi";
 import { useState } from "react";
 import { patchVotesUp } from "../utils/api";
 
-const ReviewCard = ({
-  review,
-  currentVotes,
-  setCurrentVotes,
-  setError,
-  reviews,
-  setReviews,
-}) => {
+const ReviewCard = ({ review, setError, setReviews }) => {
   const [isUpVote, setIsUpVote] = useState(false);
   const handleUpVoteClick = (review_id) => {
     if (!isUpVote) {
