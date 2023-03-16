@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { deleteComment, getCommentsByReviewId } from "../utils/api";
+import { getCommentsByReviewId } from "../utils/api";
 import CommentAdder from "./CommentAdder";
 
 const Comments = ({
@@ -12,15 +12,6 @@ const Comments = ({
 }) => {
   const [currentComments, setCurrentComments] = useState([]);
   const [isLoadingComments, setIsLoadingComments] = useState(true);
-
-  const handleDeleteComment = (comment_id) => {
-    setCurrentComments((comments) => {
-      return comments.filter((comment) => {
-        return comment.comment_id !== comment_id;
-      });
-    });
-    deleteComment(comment_id);
-  };
 
   useEffect(() => {
     setIsLoadingComments(true);
@@ -50,13 +41,6 @@ const Comments = ({
               <li key={comment.comment_id}>
                 <h3>{comment.author} wrote: </h3>
                 <p className="commentBody">{comment.body}</p>
-                {isUserLoggedIn && user.username === comment.author ? (
-                  <button
-                    onClick={() => handleDeleteComment(comment.comment_id)}
-                  >
-                    Delete Comment
-                  </button>
-                ) : null}
               </li>
             );
           })}
