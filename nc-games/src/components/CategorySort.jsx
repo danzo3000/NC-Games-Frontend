@@ -11,16 +11,16 @@ const CategorySort = () => {
   }, []);
   return (
     <div>
-      <h2>
-        To get started, click to search by category or you can view all reviews
-        below
+      <h2 className="introText">
+        Welcome to NC Games Review! To get started, select a category or view
+        all our reviews below!
       </h2>
       <ul className="categoryList">
         {categoryList.map((category) => {
           return (
             <li className="categoryItem" key={category.slug}>
               <Link to={`/categories/${category.slug}`}>
-                <p>View {category.slug} games</p>
+                View {category.slug} games
               </Link>
             </li>
           );

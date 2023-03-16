@@ -13,20 +13,134 @@
   color: white;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("./images/game-background.jpg");
+}
+
+:root {
+  --green: #f1ffc4;
+  --light-blue: #c6e2e9;
+  --dark-blue: #a7bed3;
+  --pink: #ffcaaf;
+  --brown: #dab894;
+}
+
 /* Header ----------------------------------------------- */
 
 .header {
-  margin-top: 10rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  font-family: "orbitron", sans-serif;
+  background-color: rgba(198, 226, 233, 0.9);
+  text-shadow: #ffcaaf -2px 2px;
 }
 
 /* ReviewCard ------------------------------------------- */
 
 .reviewImg {
-  width: 15rem;
+  width: 100%;
   height: auto;
+  border-radius: 20px;
+}
+
+.ReviewCard {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgba(198, 226, 233, 0.95);
+  box-shadow: 1px 1px 5px 1px black;
+}
+
+.ReviewCard a:link {
+  color: black;
+  text-decoration: none;
+}
+
+.ReviewCard a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.reviewCardTitle {
+  padding: 0.5rem;
+  font-family: "orbitron", sans-serif;
+}
+
+.reviewCardCategory {
+  padding: 0.3rem;
+  padding-top: 0;
+}
+
+.reviewCardBody {
+  padding: 0.3rem;
+  line-height: 1.25rem;
+  background-color: aliceblue;
+  margin: 0.3rem;
+  border-radius: 20px;
+}
+
+.reviewCardVotes {
+  padding: 0.2rem;
+}
+
+.likeButton {
+  margin: 0.2rem;
+  padding: 0.2rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 1px 1px 4px 1px black;
+}
+
+.likeButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
 }
 
 /* Reviews -----------------------------------------------*/
+
+.selectAndOrder {
+  display: inline-block;
+  margin: 0.5rem;
+  margin-top: 1.7rem;
+  margin-bottom: 0;
+  border: 4px solid var(--dark-blue);
+  background-color: #ffcaaf;
+  border-radius: 20px;
+  padding: 0.2rem;
+}
+
+.selectAndOrder select {
+  background-color: #ffcaaf;
+  border: none;
+  font-family: "chakra petch", sans-serif;
+}
+
+.selectAndOrder:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
+}
+
+.selectAndOrder button {
+  font-size: 1.1rem;
+  background-color: #c6e2e9;
+  padding: 0.1rem;
+  margin: 0.1rem;
+  border-radius: 10px;
+}
+
+.selectAndOrder button:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
+}
 
 .reviewsList li {
   list-style-type: none;
@@ -34,6 +148,10 @@
 
 .blueLikeButton {
   background-color: blue;
+}
+
+.categorySortAndReviews {
+  background-image: url("./images/game-background.jpg");
 }
 
 /* SingleReview ------------------------------------------*/
@@ -77,9 +195,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: orange;
-  border: 1px solid black;
+  background-color: rgba(198, 226, 233, 0.9);
+  border: 5px solid var(--pink);
   border-left: none;
+  border-right: none;
   padding: 0;
 }
 
@@ -89,6 +208,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   list-style-type: none;
+  color: var(--dark-blue);
 }
 
 .navBar ul li {
@@ -98,20 +218,41 @@
 .noUnderline {
   color: black;
   text-decoration: none;
+  font-family: "chakra petch", sans-serif;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.noUnderline:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
+}
+
+.navUserButton {
+  position: sticky;
+  float: right;
+  top: 0;
+  cursor: pointer;
+  background-color: var(--pink);
+  font-size: 2rem;
+  display: flex;
+  border: none;
+  margin: 0.4rem;
+  border-radius: 50%;
+}
+
+.navUserButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
 }
 
 .loginButtonText {
   color: black;
   text-decoration: none;
   font-size: 0.6rem;
-}
-
-.navUserButton {
-  border: 1px solid black;
-  background-color: transparent;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-family: "chakra petch", sans-serif;
 }
 
 .smallUserIcon img {
@@ -133,11 +274,47 @@
 
 .categoryItem {
   list-style-type: none;
+  padding: 0.5rem;
+  background-color: rgba(198, 226, 233, 1);
+  border: 2px solid var(--pink);
+  margin: 0.5rem;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px black;
+}
+.categoryItem a:link {
+  text-decoration: none;
+  font-family: "chakra petch", sans-serif;
+  color: black;
+}
+
+.categoryItem a:visited {
+  color: black;
+}
+
+.categoryItem:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
 }
 
 .categoryList {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: space-around;
+}
+
+.introText {
+  border: 5px solid var(--light-blue);
+  font-family: "chakra petch", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  background-color: rgba(255, 202, 175, 1);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 2px black;
 }

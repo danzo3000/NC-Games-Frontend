@@ -1,5 +1,5 @@
 const Header = () => {
-  return <h1 className="header">Welcome to NC Games!</h1>;
+  return <h1 className="header">NC Games Review</h1>;
 };
 
 export default Header;

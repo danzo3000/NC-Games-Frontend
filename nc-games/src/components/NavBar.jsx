@@ -5,12 +5,12 @@ const NavBar = ({ isUserLoggedIn, user, setIsUserLoggedIn, setUser }) => {
     <nav className="navBar">
       <ul>
         <li>
-          <Link className="noUnderline" to="/">
+          <Link className="noUnderline green" to="/">
             Home
           </Link>
         </li>
         <li>
-          <Link className="noUnderline" to="/users">
+          <Link className="noUnderline blue" to="/users">
             Users
           </Link>
         </li>
