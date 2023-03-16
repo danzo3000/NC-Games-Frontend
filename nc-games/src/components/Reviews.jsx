@@ -27,18 +27,35 @@ const Reviews = () => {
 
   useEffect(() => {
     setIsLoadingReviews(true);
-    getReviews(category_slug, sortBy, order).then((reviews) => {
-      setIsLoadingReviews(false);
-      setReviews(reviews);
-    });
+    getReviews(category_slug, sortBy, order)
+      .then((reviews) => {
+        setIsLoadingReviews(false);
+        setReviews(reviews);
+      })
+      .catch((err) => {
+        let msg = "";
+        if (err.message === "Request failed with status code 404") {
+          msg +=
+            "404: Not Found! We couldn't find that category, please check your URL or else click 'Home' to head back to our homepage!";
+        }
+        setError(msg);
+        setIsLoadingReviews(false);
+      });
   }, [category_slug, sortBy, order]);
 
   if (isLoadingReviews) {
-    return <h2>Loading....</h2>;
+    return <h2>Loading Reviews....</h2>;
+  } else if (error) {
+    return <p className="BadPathMessage">{error}</p>;
   } else {
     return (
       <section className="categorySortAndReviews">
-        <CategorySort />
+        <CategorySort
+          isLoadingReviews={isLoadingReviews}
+          setIsLoadingReviews={setIsLoadingReviews}
+          error={error}
+          setError={setError}
+        />
         <div className="selectAndOrder">
           <select onChange={handleSortChange}>
             <option value="">Sort Reviews By</option>

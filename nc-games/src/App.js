@@ -44,6 +44,15 @@ function App() {
           }
         />
         <Route path="/categories/:category_slug" element={<Reviews />} />
+        <Route
+          path="/*"
+          element={
+            <p className="BadPathMessage">
+              404: Path Not Found! Check the URL or click 'Home' to head to our
+              homepage!
+            </p>
+          }
+        />
       </Routes>
     </div>
   );
