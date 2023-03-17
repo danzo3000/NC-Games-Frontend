@@ -77,6 +77,7 @@ const ReviewCard = ({ review, setError, setReviews }) => {
         {review.votes === 1 ? "1 vote" : `${review.votes} votes`}
       </p>
       <button
+        aria-label="up vote button"
         className={isUpVote ? "blueLikeButton" : "likeButton"}
         onClick={() => {
           handleUpVoteClick(review.review_id);

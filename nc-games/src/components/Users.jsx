@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "../utils/api";
 
-const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
-  const [userList, setUserList] = useState([]);
+const Users = ({
+  isUserLoggedIn,
+  setIsUserLoggedIn,
+  user,
+  setUser,
+  userList,
+  setUserList,
+}) => {
   const [isLoadingUsers, setIsLoadingUsers] = useState(true);
   const logout = () => {
     setIsUserLoggedIn(false);
@@ -18,7 +24,7 @@ const Users = ({ isUserLoggedIn, setIsUserLoggedIn, user, setUser }) => {
       setUserList(users);
       setIsLoadingUsers(false);
     });
-  }, []);
+  }, [setUserList]);
   if (isLoadingUsers) {
     return <p className="loading">Loading Users...</p>;
   }

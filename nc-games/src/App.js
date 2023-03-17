@@ -8,6 +8,7 @@ import SingleReview from "./components/SingleReview.jsx";
 import Users from "./components/Users";
 
 function App() {
+  const [userList, setUserList] = useState([]);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   return (
@@ -26,6 +27,8 @@ function App() {
           path="/reviews/:review_id"
           element={
             <SingleReview
+              userList={userList}
+              setUserList={setUserList}
               isUserLoggedIn={isUserLoggedIn}
               setIsUserLoggedIn={setIsUserLoggedIn}
               user={user}
@@ -36,6 +39,8 @@ function App() {
           path="/users"
           element={
             <Users
+              userList={userList}
+              setUserList={setUserList}
               isUserLoggedIn={isUserLoggedIn}
               setIsUserLoggedIn={setIsUserLoggedIn}
               user={user}

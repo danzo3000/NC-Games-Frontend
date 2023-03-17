@@ -4,7 +4,13 @@ import { getReviewById } from "../utils/api";
 import { useState } from "react";
 import Comments from "./Comments";
 
-const SingleReview = ({ isUserLoggedIn, setIsUserLoggedIn, user }) => {
+const SingleReview = ({
+  isUserLoggedIn,
+  setIsUserLoggedIn,
+  user,
+  userList,
+  setUserList,
+}) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);
@@ -76,6 +82,8 @@ const SingleReview = ({ isUserLoggedIn, setIsUserLoggedIn, user }) => {
               : "Hide comments"}
           </button>
           <Comments
+            userList={userList}
+            setUserList={setUserList}
             showComments={showComments}
             setShowComments={setShowComments}
             review_id={review_id}

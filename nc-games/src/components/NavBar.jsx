@@ -16,10 +16,12 @@ const NavBar = ({ isUserLoggedIn, user }) => {
         </li>
         <li className="navUserButton">
           {isUserLoggedIn ? (
-            <div className="smallUserIcon">
-              <img src={user.avatar_url} alt={user.username} />
-              <p>{user.username}</p>
-            </div>
+            <Link to="/users">
+              <div className="smallUserIcon">
+                <img src={user.avatar_url} alt={user.username} />
+                <p>{user.username}</p>
+              </div>
+            </Link>
           ) : (
             <Link className="loginButtonText" to="/users">
               LOGIN

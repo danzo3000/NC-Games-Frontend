@@ -14,7 +14,8 @@ const CategorySort = ({ setIsLoadingReviews }) => {
     <div>
       <h2 className="introText">
         Welcome to NC Games Review! To get started, select a category or view
-        all our reviews below!
+        all our reviews below! To learn more about each review, simply click on
+        the picture. Happy browsing!
       </h2>
       <ul className="categoryList">
         {categoryList.map((category) => {

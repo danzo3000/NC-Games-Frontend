@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { deleteComment, getCommentsByReviewId } from "../utils/api";
+import { deleteComment, getCommentsByReviewId, getUsers } from "../utils/api";
 import CommentAdder from "./CommentAdder";
 
 const Comments = ({
@@ -9,9 +9,25 @@ const Comments = ({
   isUserLoggedIn,
   setIsUserLoggedIn,
   user,
+  userList,
+  setUserList,
 }) => {
   const [currentComments, setCurrentComments] = useState([]);
   const [isLoadingComments, setIsLoadingComments] = useState(true);
+
+  useEffect(() => {
+    getUsers().then((users) => {
+      setUserList(users);
+    });
+  }, [setUserList]);
+
+  const getUserImage = (author) => {
+    const commentAuthor = userList.filter((singleUser) => {
+      return singleUser.username === author;
+    });
+
+    return commentAuthor[0].avatar_url;
+  };
 
   const handleDeleteComment = (comment_id) => {
     setCurrentComments((comments) => {
@@ -48,16 +64,23 @@ const Comments = ({
           {currentComments.map((comment) => {
             return (
               <li className="singleComment" key={comment.comment_id}>
-                <h3 className="commentAuthor">{comment.author} </h3>
-                <p className="commentBody">{comment.body}</p>
-                {isUserLoggedIn && user.username === comment.author ? (
-                  <button
-                    className="deleteCommentButton"
-                    onClick={() => handleDeleteComment(comment.comment_id)}
-                  >
-                    Delete
-                  </button>
-                ) : null}
+                <img
+                  className="smallUserCommentsImg"
+                  src={getUserImage(comment.author)}
+                  alt={comment.author}
+                />
+                <div className="commentAuthorAndBody">
+                  <h3 className="commentAuthor">{comment.author} </h3>
+                  <p className="commentBody">{comment.body}</p>
+                  {isUserLoggedIn && user.username === comment.author ? (
+                    <button
+                      className="deleteCommentButton"
+                      onClick={() => handleDeleteComment(comment.comment_id)}
+                    >
+                      Delete
+                    </button>
+                  ) : null}
+                </div>
               </li>
             );
           })}

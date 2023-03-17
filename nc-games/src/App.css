@@ -120,6 +120,7 @@ body {
   background-color: #ffcaaf;
   border-radius: 20px;
   padding: 0.2rem;
+  box-shadow: 1px 1px 5px 1px black;
 }
 
 .selectAndOrder select {
@@ -152,6 +153,15 @@ body {
 
 .blueLikeButton {
   background-color: var(--dark-blue);
+  margin: 0.2rem;
+  padding: 0.2rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 1px 1px 4px 1px black;
+}
+
+.blueLikeButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 5px white;
 }
 
 .categorySortAndReviews {
@@ -222,11 +232,13 @@ body {
 
 .showComments ul li {
   border-radius: 20px;
-  display: block;
+  display: inline-flex;
   width: 90%;
   text-align: start;
   background-color: #ffcaaf;
   margin-top: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.2rem;
 }
 
 .commentAuthor {
@@ -240,10 +252,14 @@ body {
   font-size: 0.75rem;
   padding-left: 0.75rem;
   margin-bottom: 0.75rem;
+  background-color: white;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 10px;
+  padding: 0.2rem;
 }
 
 .deleteCommentButton {
-  margin: 0.5rem;
   margin-left: 0.75rem;
   padding: 0.2rem;
   font-size: 0.75rem;
@@ -256,6 +272,20 @@ body {
 .deleteCommentButton:hover {
   cursor: pointer;
   box-shadow: 1px 1px 5px 5px white;
+}
+
+.smallUserCommentsImg {
+  max-height: 45px;
+  max-width: 85px;
+  clip-path: circle(50px at 50% 50%);
+  margin-left: 0.5rem;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.commentAuthorAndBody {
+  display: block;
+  text-align: start;
 }
 
 /* CommentAdder ------------------------------------------ */
@@ -374,6 +404,8 @@ body {
   max-height: 25px;
   max-width: 65px;
   clip-path: circle(50px at 50% 50%);
+  border: 1px solid black;
+  border-radius: 50%;
 }
 
 .smallUserIcon p {
@@ -590,9 +622,9 @@ body {
     justify-content: space-between;
   }
 
-  .reviewImg {
-    /* max-height: 300px; */
-  }
+  /* .reviewImg {
+    max-height: 300px;
+  } */
 }
 
 @media only screen and (min-width: 1164px) {
