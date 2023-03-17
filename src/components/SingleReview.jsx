@@ -68,9 +68,7 @@ const SingleReview = ({
           <button
             className="commentsButton"
             onClick={() => {
-              {
-                showComments ? setShowComments(false) : setShowComments(true);
-              }
+              showComments ? setShowComments(false) : setShowComments(true);
             }}
           >
             {!showComments && singleReview.comment_count === 1
